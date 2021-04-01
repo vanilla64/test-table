@@ -3,11 +3,85 @@
 }
 
 .table__header {
+  box-sizing: border-box;
   position: sticky;
   top: 0;
   background: #fff;
   white-space: pre;
+  z-index: 2;
 }
+
+.table_type_fixed,
+.table_type_scroll
+{
+  background: #f8f8f8;
+}
+
+.table__col {
+  position: sticky;
+}
+
+.table__col_pos_first {
+  left: 0;
+  background: #fff;
+}
+
+.table__row {
+  /*position: sticky;*/
+  background-color: #00b0ff;
+  z-index: 2;
+}
+
+.table__row_type_index {
+  left: 0;
+}
+
+.table__row_type_even {
+  background-color: #fff;
+}
+
+.table__row_type_odd {
+  background-color: #f8f8f8;
+}
+
+.divvv {
+  display: flex;
+  /*position: sticky;*/
+  /*top: 0;*/
+  /*left: 0;*/
+}
+
+.table__left-col {
+  position: sticky;
+  left: 0;
+}
+
+.table__headercell {
+  position: sticky;
+  background: #fff;
+}
+
+.table__headercell:first-child {
+  left: 0;
+  z-index: 2;
+  background: yellow;
+}
+
+.table__headercell:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 180px;
+  background: #7b1fa2;
+}
+
+/*.table__headercell_pos_first {*/
+/*  left: 0;*/
+/*  z-index: 2;*/
+/*}*/
+
+/*.table__headercell_pos_second {*/
+/*  left: 300px;*/
+/*}*/
 
 .table__cell_type_id {
   display: flex;
@@ -15,4 +89,22 @@
 
 .table__cell_type_phone {
   white-space: pre;
+}
+
+.table_type_fixed {
+  width: 350px;
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+.table_type_scroll {
+  /*position: sticky;*/
+  /*top: 0;*/
+  white-space: nowrap;
+}
+
+.table__icon {
+  font-size: 20px;
 }

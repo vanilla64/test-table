@@ -14,10 +14,11 @@ code {
 }
 
 .table-container {
+  display: flex;
+
   height: 480px;
   overflow: scroll;
-  /*overflow-x: scroll;*/
-  /*overflow-y: scroll;*/
+  position: relative;
 }
 
 .table-container::-webkit-scrollbar {

@@ -1,0 +1,11 @@
+.dropdown-content__list-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0 0 20px;
+}
+
+.dropdown-content__text {
+  color: #00acc1;
+  width: 150px;
+}

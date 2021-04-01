@@ -7,6 +7,7 @@ import UserInfo from "../UserInfo/UserInfo";
 import FormAddUser from "../FormAddUser/FormAddUser";
 import FilterForm from "../FilterForm/FilterForm";
 import M from 'materialize-css'
+import SelectColumnForm from "../SelectColumnForm/SelectColumnForm";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -15,6 +16,13 @@ function App() {
   const [isPreloaderVisible, setIsPreloaderVisible] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
   const [isFormAddUserVisible, setIsFormAddUserVisible] = useState(false);
+
+  // Запуск скрипта формы выбора колонок
+  const dropdownBtn = document.querySelectorAll('.dropdown-trigger');
+  M.Dropdown.init(dropdownBtn, {
+    closeOnClick: false,
+    constrainWidth: false
+  });
 
   const resetBeforeFetch = () => {
     setUsers([])
@@ -104,7 +112,9 @@ function App() {
           <>
             <FilterForm
               setDataForRender={setUsersToRender}
-              data={users} />
+              data={users}
+            />
+            <SelectColumnForm />
             <div className="row table-container">
               <Table
                 setUsersToRender={setUsersToRender}
