@@ -1,7 +1,7 @@
 import React from 'react';
 
 function TableRow(props) {
-  const { user, index, type } = props
+  const { user, index, type, columnsRender } = props
   const {
     id,
     firstName,
@@ -43,14 +43,23 @@ function TableRow(props) {
       case 'scroll':
         return row =
           <>
-            <td>{ email }</td>
-            <td className="table__cell_type_phone">{ phone }</td>
-            <td>{ gender }</td>
-            <td>{ ipAddress }</td>
-            <td>{ dollars }</td>
-            <td>{ carModel }</td>
-            <td>{ carYear }</td>
-            <td>{ carVin }</td>
+            { columnsRender.email.visible && <td className="table__cell_type_email">{email}</td> }
+            { columnsRender.phone.visible && <td className="table__cell_type_phone">{ phone }</td> }
+            { columnsRender.gender.visible && <td className="table__cell_type_gender">{ gender }</td> }
+            { columnsRender.ipAddress.visible && <td className="table__cell_type_ip">{ ipAddress }</td> }
+            { columnsRender.price.visible && <td className="table__cell_type_price">{ dollars }</td> }
+            {
+              columnsRender.carImage.visible &&
+              <td className="table__cell_type_img">
+                <img
+                  className="table__img"
+                  src={columnsRender.carImage.src[Math.floor(Math.random() * 5)]} alt="Car"
+                />
+              </td>
+            }
+            { columnsRender.carModel.visible && <td>{ carModel }</td> }
+            { columnsRender.carYear.visible && <td>{ carYear }</td> }
+            { columnsRender.carVin.visible && <td>{ carVin }</td> }
           </>
     }
   }
@@ -59,34 +68,6 @@ function TableRow(props) {
     <tr className={ classnames.tableRow }>
       { renderRow(type) }
     </tr>
-
-
-
-    // <tr className="table-row" onClick={handleClick}>
-    //   <td className={ classnames.index }>{ index + 1 }</td>
-    //   <td className={ classnames.id } >{ id }</td>
-    //   <td>{ firstName }</td>
-    //   <td>{ lastName }</td>
-    //   <td>{ email }</td>
-    //   <td className="table__cell_type_phone">{ phone }</td>
-    //   <td>{ gender }</td>
-    //   <td>{ ipAddress }</td>
-    //   <td>{ dollars }</td>
-    //   <td>{ carModel }</td>
-    //   <td>{ carYear }</td>
-    //   <td>{ carVin }</td>
-    //
-    //   <td>{ firstName }</td>
-    //   <td>{ lastName }</td>
-    //   <td>{ email }</td>
-    //   <td>{ phone }</td>
-    //   <td>{ gender }</td>
-    //   <td>{ ipAddress }</td>
-    //   <td>{ dollars }</td>
-    //   <td>{ carModel }</td>
-    //   <td>{ carYear }</td>
-    //   <td>{ carVin }</td>
-    // </tr>
   );
 }
 

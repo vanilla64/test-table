@@ -6,22 +6,24 @@ import Preloader from "../Preloader/Preloader";
 import UserInfo from "../UserInfo/UserInfo";
 import FormAddUser from "../FormAddUser/FormAddUser";
 import FilterForm from "../FilterForm/FilterForm";
+import { TABLE_INFO } from "../../utils/constants";
 import M from 'materialize-css'
-import SelectColumnForm from "../SelectColumnForm/SelectColumnForm";
 
 function App() {
   const [users, setUsers] = useState([]);
   const [usersToRender, setUsersToRender] = useState([]);
   const [userInfo, setUserInfo] = useState({});
   const [isPreloaderVisible, setIsPreloaderVisible] = useState(false);
+  const [isTableLoading, setIsTableLoading] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
   const [isFormAddUserVisible, setIsFormAddUserVisible] = useState(false);
+  const [columnsRender, setColumnsRender] = useState(TABLE_INFO);
 
   // Запуск скрипта формы выбора колонок
   const dropdownBtn = document.querySelectorAll('.dropdown-trigger');
   M.Dropdown.init(dropdownBtn, {
     closeOnClick: false,
-    constrainWidth: false
+    constrainWidth: false,
   });
 
   const resetBeforeFetch = () => {
@@ -38,6 +40,22 @@ function App() {
       .then(res => {
         setUsers(res)
         setUsersToRender(res.slice(0, 50))
+      })
+      .then(() => {
+        // const tableHeaders = Array.from(document.querySelectorAll('.table__header tr th'))
+        // const inputNames = tableHeaders.map(item => {
+        //   return item.textContent.split(' ').join().replace(',', '')
+        // })
+        //
+        // let inputValues = {}
+        //
+        // inputNames.forEach((item, index) => {
+        //   if(index> 3) {
+        //     inputValues[item] = true
+        //   }
+        // })
+        //
+        // setColumnsRender(inputValues)
       })
       .finally(() => setIsPreloaderVisible(false))
       .catch((err) => M.toast({html: err.message}))
@@ -93,6 +111,7 @@ function App() {
     <div className="App">
       <div className="container">
         <h1>Test task for Аэро-Трейд</h1>
+        {/*<h2>{ columnsRender.Email.toString() }</h2>*/}
         <div className="row">
           <button
             onClick={handleGetData}
@@ -114,15 +133,19 @@ function App() {
               setDataForRender={setUsersToRender}
               data={users}
             />
-            <SelectColumnForm />
-            <div className="row table-container">
-              <Table
-                setUsersToRender={setUsersToRender}
-                handleRowClick={handleRowClick}
-                usersToRender={usersToRender}
-                data={users}/>
-              { isUserInfoOpen && <UserInfo onClose={setIsUserInfoOpen} user={userInfo}/> }
-            </div>
+
+            <Table
+              columnsRender={columnsRender}
+              setColumnsRender={setColumnsRender}
+              setUsersToRender={setUsersToRender}
+              handleRowClick={handleRowClick}
+              usersToRender={usersToRender}
+              data={users}
+              isTableLoading={isTableLoading}
+              setIsTableLoading={setIsTableLoading}
+            />
+
+            { isUserInfoOpen && <UserInfo onClose={setIsUserInfoOpen} user={userInfo}/> }
           </>
         }
       </div>

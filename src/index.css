@@ -24,3 +24,9 @@ code {
 .table-container::-webkit-scrollbar {
   width: 0;
 }
+
+.table-container__preloader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
