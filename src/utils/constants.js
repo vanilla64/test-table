@@ -4,11 +4,11 @@ import s15 from '../images/s15.jpg'
 import r34 from '../images/r34.gif'
 import sx180 from '../images/180sx.jpg'
 
-export const MIN_DATA_FETCH = 'http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}'
-export const MAX_DATA_FETCH = 'http://www.filltext.com/?rows=1000&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&delay=3&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D'
 export const DATA_FETCH = 'https://my.api.mockaroo.com/test.json?key=94d3b3a0'
 
 const cars = [s13, s14, s15, r34, sx180]
+
+export const SLICE_COUNT = 100
 
 export const TABLE_INFO =
   {
@@ -28,9 +28,17 @@ export const TABLE_INFO =
       visible: true,
       title: 'IP Address'
     },
-    price: {
+    dollars: {
       visible: true,
-      title: 'Price'
+      title: 'Dollars'
+    },
+    euro: {
+      visible: true,
+      title: 'Euro'
+    },
+    jpy: {
+      visible: true,
+      title: 'JPY'
     },
     carImage: {
       visible: true,

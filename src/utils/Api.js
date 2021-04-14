@@ -12,22 +12,6 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  getMinData = () => {
-    return fetch(this._url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": '*'
-      }
-    })
-      .then(res => this._initialRequest(res))
-  }
-
-  getMaxData = () => {
-    return fetch(this._url, {method: 'GET'})
-      .then(res => this._initialRequest(res))
-  }
-
   getData = () => {
     return fetch(this._url, {method: 'GET'})
       .then(res => this._initialRequest(res))

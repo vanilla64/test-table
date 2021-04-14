@@ -2,7 +2,7 @@
   margin-bottom: 15px;
 }
 
-.table__header {
+.table__header th {
   box-sizing: border-box;
   position: sticky;
   top: 0;
@@ -27,7 +27,6 @@
 }
 
 .table__row {
-  /*position: sticky;*/
   background-color: #00b0ff;
   z-index: 2;
 }
@@ -45,52 +44,13 @@
 }
 
 .table__img {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   object-fit: cover;
 }
 
-.divvv {
-  display: flex;
-  /*position: sticky;*/
-  /*top: 0;*/
-  /*left: 0;*/
-}
-
-.table__left-col {
-  position: sticky;
-  left: 0;
-}
-
-.table__headercell {
-  position: sticky;
-  background: #fff;
-}
-
-.table__headercell:first-child {
-  left: 0;
-  z-index: 2;
-  background: yellow;
-}
-
-.table__headercell:nth-child(2) {
-  position: absolute;
-  top: 0;
-  left: 180px;
-  background: #7b1fa2;
-}
-
-/*.table__headercell_pos_first {*/
-/*  left: 0;*/
-/*  z-index: 2;*/
-/*}*/
-
-/*.table__headercell_pos_second {*/
-/*  left: 300px;*/
-/*}*/
-
 .table__cell_type_id {
-  display: flex;
+  cursor: pointer;
 }
 
 .table__cell_type_email {
@@ -131,11 +91,10 @@
 }
 
 .table_type_scroll {
-  /*position: sticky;*/
-  /*top: 0;*/
   white-space: nowrap;
 }
 
 .table__icon {
   font-size: 20px;
+  vertical-align: middle;
 }

@@ -1,20 +1,15 @@
 import React, { useState } from 'react';
 import M from 'materialize-css';
+import { SLICE_COUNT } from '../../utils/constants'
 
 function FilterForm(props) {
-  const { data, setDataForRender } = props;
+  const { data, setDataForRender, setIsTableScrollActive, usersToRender } = props;
   const [values, setValues] = useState({});
 
   const styles = {
-    submitButton: data.length < 50
-      ? 'col s1 waves-effect waves-light btn green lighten-2'
-      : 'col s2 waves-effect waves-light btn green lighten-2',
-
+    submitButton: 'col s1 waves-effect waves-light btn green lighten-2',
     resetButton: 'col s2 waves-effect waves-light btn black-text transparent',
-
-    inputId: data.length < 50
-      ? 'input-field col s1'
-      : 'input-field col s2'
+    inputId: 'input-field col s1',
   }
 
   const handleChange = (evt) => {
@@ -24,6 +19,7 @@ function FilterForm(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
+    setIsTableScrollActive(false)
 
     let filteredKeys = {}
 
@@ -41,7 +37,7 @@ function FilterForm(props) {
 
     keysForSearch.forEach(key => {
       let arr =
-        data.filter(
+        usersToRender.filter(
           item => item[key].toString().toLowerCase().includes(values[key].toLowerCase())
         )
 
@@ -60,7 +56,8 @@ function FilterForm(props) {
   }
 
   const handleReset = () => {
-    setDataForRender(data.slice(0, 50))
+    setIsTableScrollActive(true)
+    setDataForRender(data.slice(0, SLICE_COUNT))
     setValues({})
   }
 
@@ -103,10 +100,7 @@ function FilterForm(props) {
         <label htmlFor="filterPhone">Phone</label>
       </div>
       <button type="submit" className={styles.submitButton}>Find</button>
-      {
-        data.length >= 50 ? <></> :
-        <button type="reset" className={styles.resetButton}>Show table</button>
-      }
+      <button type="reset" className={styles.resetButton}>Show table</button>
     </form>
   );
 }

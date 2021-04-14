@@ -11,15 +11,12 @@ function TableRow(props) {
     gender,
     ipAddress,
     dollars,
+    euro,
+    jpy,
     carModel,
     carYear,
     carVin,
-    // img
   } = user;
-
-  const handleClick = () => {
-    props.handleRowClick(user)
-  }
 
   const classnames = {
     tableRow: index % 2 === 0
@@ -47,7 +44,9 @@ function TableRow(props) {
             { columnsRender.phone.visible && <td className="table__cell_type_phone">{ phone }</td> }
             { columnsRender.gender.visible && <td className="table__cell_type_gender">{ gender }</td> }
             { columnsRender.ipAddress.visible && <td className="table__cell_type_ip">{ ipAddress }</td> }
-            { columnsRender.price.visible && <td className="table__cell_type_price">{ dollars }</td> }
+            { columnsRender.dollars.visible && <td className="table__cell_type_price">{ dollars }</td> }
+            { columnsRender.euro.visible && <td className="table__cell_type_price">{ euro }</td> }
+            { columnsRender.jpy.visible && <td className="table__cell_type_price">{ jpy }</td> }
             {
               columnsRender.carImage.visible &&
               <td className="table__cell_type_img">
